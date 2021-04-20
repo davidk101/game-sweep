@@ -8,13 +8,28 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    final let url = URL(string: "https://api.seatgeek.com/2/events?client_id=" + CLIENT_ID)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        downloadJson()
     }
     
-    final let url = URL(string: "https://api.seatgeek.com/2/events?client_id=" + CLIENT_ID)
+    func downloadJson(){
+        
+        guard let downloadURL = url else{
+            return
+        }
+        
+        URLSession.shared.dataTask(with: downloadURL){data, urlReponse, error in
+                                                       
+            print("done")
+        }.resume()
+    }
+    
+   
     
     
 

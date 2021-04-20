@@ -16,6 +16,8 @@
 		9804DB28262F73CF000F68DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9804DB26262F73CF000F68DC /* LaunchScreen.storyboard */; };
 		9804DB33262F73CF000F68DC /* game_sweepTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9804DB32262F73CF000F68DC /* game_sweepTests.swift */; };
 		9804DB3E262F73CF000F68DC /* game_sweepUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9804DB3D262F73CF000F68DC /* game_sweepUITests.swift */; };
+		9804DB4F262F7EE0000F68DC /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9804DB4E262F7EE0000F68DC /* EventCell.swift */; };
+		9804DB54262F81B8000F68DC /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9804DB53262F81B8000F68DC /* Secrets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		9804DB39262F73CF000F68DC /* game-sweepUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "game-sweepUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9804DB3D262F73CF000F68DC /* game_sweepUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = game_sweepUITests.swift; sourceTree = "<group>"; };
 		9804DB3F262F73CF000F68DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9804DB4E262F7EE0000F68DC /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		9804DB53262F81B8000F68DC /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 				9804DB26262F73CF000F68DC /* LaunchScreen.storyboard */,
 				9804DB29262F73CF000F68DC /* Info.plist */,
 				9804DB21262F73CD000F68DC /* game_sweep.xcdatamodeld */,
+				9804DB4E262F7EE0000F68DC /* EventCell.swift */,
+				9804DB53262F81B8000F68DC /* Secrets.swift */,
 			);
 			path = "game-sweep";
 			sourceTree = "<group>";
@@ -262,7 +268,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9804DB23262F73CD000F68DC /* game_sweep.xcdatamodeld in Sources */,
+				9804DB54262F81B8000F68DC /* Secrets.swift in Sources */,
 				9804DB1D262F73CD000F68DC /* ViewController.swift in Sources */,
+				9804DB4F262F7EE0000F68DC /* EventCell.swift in Sources */,
 				9804DB19262F73CD000F68DC /* AppDelegate.swift in Sources */,
 				9804DB1B262F73CD000F68DC /* SceneDelegate.swift in Sources */,
 			);

@@ -35,7 +35,7 @@ class ViewController: UIViewController {
                 
                 let decoder = JSONDecoder()
                 let events = try decoder.decode(Events.self, from: data)
-                print(events.events[0].id)
+                
             }
             catch{
                 

@@ -19,18 +19,38 @@ class Events: Codable{
 
 class Event: Codable{
     
-    //let display_location : String
     let id: Int
-    //let title: String
-    //let datetime_local: Date
-    //let performers: Performers
+    let short_title: String
+    let datetime_local: String
+    let venue: Venue
+    let performers: [Performers]
     
-    init(id: Int){
+    init(id: Int, datetime_local: String, short_title: String, venue: Venue, performers: [Performers]){
         
-        //self.display_location = display_location
         self.id = id
-        //self.title = title
-        //self.datetime_local = datetime_local
-        //self.performers = performers
+        self.short_title = short_title
+        self.datetime_local = datetime_local
+        self.venue = venue
+        self.performers = performers
+    }
+}
+
+class Venue: Codable{
+    
+    let display_location: String
+    
+    init(display_location: String){
+        
+        self.display_location = display_location
+    }
+}
+
+class Performers: Codable{
+    
+    let image: String
+    
+    init(image: String){
+        
+        self.image = image
     }
 }

@@ -7,30 +7,30 @@
 
 import UIKit
 
-class Event: Codable{
+class Events: Codable{
     
-    let display_location : String
-    let id: Int
-    let title: String
-    let datetime_local: Date
-    let performers: Performers
+    let events: [Event]
     
-    init(display_location : String, id: Int, title: String, datetime_local: Date, performers: Performers){
+    init(events: [Event]){
         
-        self.display_location = display_location
-        self.id = id
-        self.title = title
-        self.datetime_local = datetime_local
-        self.performers = performers
+        self.events = events
     }
 }
 
-class Performers: Codable{
+class Event: Codable{
     
-    let image: String
+    //let display_location : String
+    let id: Int
+    //let title: String
+    //let datetime_local: Date
+    //let performers: Performers
     
-    init(image: String){
+    init(id: Int){
         
-        self.image = image
+        //self.display_location = display_location
+        self.id = id
+        //self.title = title
+        //self.datetime_local = datetime_local
+        //self.performers = performers
     }
 }

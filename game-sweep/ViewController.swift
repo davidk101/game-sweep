@@ -24,8 +24,24 @@ class ViewController: UIViewController {
         }
         
         URLSession.shared.dataTask(with: downloadURL){data, urlReponse, error in
+            
+            guard let data = data, error == nil, urlReponse != nil else{
+                
+                print("network error")
+                return
+            }
+            
+            do{
+                
+                let decoder = JSONDecoder()
+                let events = try decoder.decode(Events.self, from: data)
+                print(events.events[0].id)
+            }
+            catch{
+                
+                print("error parsing JSON")
+            }
                                                        
-            print("done")
         }.resume()
     }
     

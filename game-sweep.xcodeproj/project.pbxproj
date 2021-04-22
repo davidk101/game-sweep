@@ -109,7 +109,6 @@
 			children = (
 				9804DB18262F73CD000F68DC /* AppDelegate.swift */,
 				9804DB1A262F73CD000F68DC /* SceneDelegate.swift */,
-				9804DB1C262F73CD000F68DC /* ViewController.swift */,
 				9804DB1E262F73CD000F68DC /* Main.storyboard */,
 				9804DB24262F73CF000F68DC /* Assets.xcassets */,
 				9804DB26262F73CF000F68DC /* LaunchScreen.storyboard */,
@@ -117,6 +116,7 @@
 				9804DB21262F73CD000F68DC /* game_sweep.xcdatamodeld */,
 				9804DB4E262F7EE0000F68DC /* EventCell.swift */,
 				9804DB53262F81B8000F68DC /* Secrets.swift */,
+				9804DB1C262F73CD000F68DC /* ViewController.swift */,
 				9804DB58262F85EA000F68DC /* Event.swift */,
 			);
 			path = "game-sweep";

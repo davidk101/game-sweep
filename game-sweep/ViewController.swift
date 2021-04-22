@@ -7,14 +7,21 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     final let url = URL(string: "https://api.seatgeek.com/2/events?client_id=" + CLIENT_ID)
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    private var events = [Event]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         downloadJson()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     func downloadJson(){
@@ -34,7 +41,13 @@ class ViewController: UIViewController {
             do{
                 
                 let decoder = JSONDecoder()
-                let events = try decoder.decode(Events.self, from: data)
+                let downloadedEvents = try decoder.decode(Events.self, from: data)
+                self.events = downloadedEvents.events
+                
+                DispatchQueue.main.async {
+                    
+                    self.tableView.reloadData()
+                }
                 
             }
             catch{
@@ -45,7 +58,28 @@ class ViewController: UIViewController {
         }.resume()
     }
     
-   
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return events.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell") as? EventCell else{
+            
+            return UITableViewCell()
+        }
+        
+        cell.title.text = events[indexPath.row].short_title
+        cell.location.text = events[indexPath.row].venue.display_location
+        cell.time.text = events[indexPath.row].datetime_local
+        
+        //print(cell.title.text)
+    
+        
+        return cell
+        
+    }
     
     
 

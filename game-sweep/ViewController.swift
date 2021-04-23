@@ -14,9 +14,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    private var events = [Event]()
+    private var networkEvents = [Event]()
     
-    private var filteredEvents: [Event] = []
+    var events: [Event] = []
+    
+    var filteredEvents: [Event] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +38,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return
         }
         
-        URLSession.shared.dataTask(with: downloadURL){data, urlReponse, error in
+        URLSession.shared.dataTask(with: downloadURL){ [self]data, urlReponse, error in
             
             guard let data = data, error == nil, urlReponse != nil else{
                 
@@ -48,7 +50,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 let decoder = JSONDecoder()
                 let downloadedEvents = try decoder.decode(Events.self, from: data)
-                self.events = downloadedEvents.events
+                self.networkEvents = downloadedEvents.events
+                
+                self.filteredEvents = self.events
                 
                 DispatchQueue.main.async {
                     
@@ -76,9 +80,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return UITableViewCell()
         }
         
-        cell.title.text = events[indexPath.row].short_title
-        cell.location.text = events[indexPath.row].venue.display_location
-        cell.time.text = events[indexPath.row].datetime_local
+        cell.title.text = filteredEvents[indexPath.row].short_title
+        cell.location.text = filteredEvents[indexPath.row].venue.display_location
+        cell.time.text = filteredEvents[indexPath.row].datetime_local
         
         if let imageURL = URL(string: events[indexPath.row].performers[0].image){
             
@@ -122,7 +126,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     filteredEvents.append(event)
                 }
             }
-            
         }
         
         self.tableView.reloadData()

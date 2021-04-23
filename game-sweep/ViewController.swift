@@ -22,6 +22,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.rowHeight = 220
     }
     
     func downloadJson(){
@@ -74,8 +76,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.location.text = events[indexPath.row].venue.display_location
         cell.time.text = events[indexPath.row].datetime_local
         
-        //print(cell.title.text)
-    
+        if let imageURL = URL(string: events[indexPath.row].performers[0].image){
+            
+            DispatchQueue.global().async {
+                
+                let data = try? Data(contentsOf: imageURL)
+                
+                if let data = data{
+                    
+                    let image = UIImage(data: data)
+                    
+                    DispatchQueue.main.async {
+                        
+                        cell.imgView.image = image
+                    }
+                    
+                }
+            }
+            
+        }
         
         return cell
         

@@ -7,13 +7,16 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     final let url = URL(string: "https://api.seatgeek.com/2/events?client_id=" + CLIENT_ID)
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     private var events = [Event]()
+    
+    private var filteredEvents: [Event] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +25,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.delegate = self
         tableView.dataSource = self
+        searchBar.delegate = self
         
         tableView.rowHeight = 220
     }
@@ -100,8 +104,46 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        filteredEvents = []
+        
+        if searchText == ""{
+            
+            filteredEvents = events
+        }
+        
+        else{
+            
+            for event in events{
+                
+                if event.short_title.lowercased().contains(searchText.lowercased()){
+                    
+                    filteredEvents.append(event)
+                }
+            }
+            
+        }
+        
+        self.tableView.reloadData()
+        
+    }
     
-
-
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        filteredEvents = []
+        filteredEvents = events
+        self.tableView.reloadData()
+    }
+    
+    // to persist text in search bar
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+    }
 }
 

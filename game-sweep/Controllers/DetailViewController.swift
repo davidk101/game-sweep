@@ -8,22 +8,59 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    
+    private var locationString: String
+    private var titleString: String
+    private var timeString: String
+    private var imageURLString: String
+    
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var location: UILabel!
-    @IBOutlet weak var heartButton: UIButton!
     @IBOutlet weak var eventTitle: UILabel!
     
+    @IBOutlet weak var heartButton: UIButton!
     private let unlikedImage = UIImage(named: "heartBlank")
     private let likedImage = UIImage(named: "heartRed")
     private var isLiked = false
     private let unlikedScale: CGFloat = 0.7
     private let likedScale: CGFloat = 1.3
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .systemRed
+        setLabels()
+    }
+    
+    private func setLabels(){
+        
+        /*time.text = timeString
+        location.text = locationString
+        eventTitle.text = titleString
+        
+        if let imageURL = URL(string: imageURLString){
+            
+            DispatchQueue.global().async {
+                
+                let data = try? Data(contentsOf: imageURL)
+                
+                if let data = data{
+                    
+                    let image = UIImage(data: data)
+                    
+                    DispatchQueue.main.async {
+                        
+                        self.imgView.image = image
+                    }
+                }
+            }
+        }*/
+        
+        print(timeString)
+        print(locationString)
+        print(imageURLString)
+        print(titleString)
     }
     
     public func flipLikedState(){

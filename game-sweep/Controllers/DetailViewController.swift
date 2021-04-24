@@ -23,12 +23,10 @@ class DetailViewController: UIViewController {
     
     var observer: NSObjectProtocol?
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        observer = NotificationCenter.default.addObserver(forName: Notification.Name("cellData"), object: nil, queue: .main, using: { (notification) in
+        observer = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "cellData"), object: nil, queue: .main, using: { (notification) in
             
             guard let object = notification.object as? [String: String] else{
                 
@@ -55,21 +53,14 @@ class DetailViewController: UIViewController {
                 return
             }
             
-            DispatchQueue.main.async{
+            /*DispatchQueue.main.async{
                 
                 self.setLabels(titleString: titleString, locationString: locationString, timeString: timeString, imageURLString: imageURLString)
-            }
-            
-            print(titleString)
-            print(locationString)
-            print(imageURLString)
-            print(timeString)
+            }*/
+    
             self.eventTitle.text = titleString
-                        
-
             
         })
-
     }
     
     private func setLabels(titleString: String, locationString: String, timeString: String, imageURLString: String){
@@ -99,7 +90,6 @@ class DetailViewController: UIViewController {
                 }
             }
         }
-
         
     }
     

@@ -146,7 +146,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        guard let vc = storyboard?.instantiateViewController(identifier: "detail_vc") as? DetailViewController else{
+            
+            return
+        }
         
+        present(vc, animated: true, completion: nil)
         
     }
 }

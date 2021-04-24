@@ -32,6 +32,11 @@ class DetailViewController: UIViewController {
         animate()
     }
     
+    @IBAction func buttonToggled(_ sender: Any) {
+        
+        flipLikedState()
+    }
+    
     private func animate(){
         
         UIView.animate(withDuration: 0.1, animations: {

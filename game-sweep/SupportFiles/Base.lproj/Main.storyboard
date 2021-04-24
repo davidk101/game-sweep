@@ -118,6 +118,9 @@
                                 <rect key="frame" x="338" y="44" width="56" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="heartBlank"/>
+                                <connections>
+                                    <action selector="buttonToggled:" destination="gCz-wx-4TY" eventType="touchUpInside" id="7d1-kI-VEV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CSi-5v-SAE"/>
@@ -125,7 +128,7 @@
                     </view>
                     <connections>
                         <outlet property="eventTitle" destination="7fc-Tg-cRt" id="P7e-ma-S34"/>
-                        <outlet property="heartButton" destination="qgB-5U-hH4" id="6KA-Oi-4Xb"/>
+                        <outlet property="heartButton" destination="qgB-5U-hH4" id="Agr-mg-11a"/>
                         <outlet property="imgView" destination="I2v-pU-VBD" id="av4-4W-GMV"/>
                         <outlet property="location" destination="3vw-jV-Ov4" id="9dR-i6-86v"/>
                         <outlet property="time" destination="k5i-Ak-ryL" id="XaH-aH-cmx"/>

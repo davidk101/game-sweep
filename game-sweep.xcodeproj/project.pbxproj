@@ -113,20 +113,12 @@
 		9804DB17262F73CD000F68DC /* game-sweep */ = {
 			isa = PBXGroup;
 			children = (
-				9804DB18262F73CD000F68DC /* AppDelegate.swift */,
-				9804DB1A262F73CD000F68DC /* SceneDelegate.swift */,
-				9804DB1E262F73CD000F68DC /* Main.storyboard */,
-				9804DB24262F73CF000F68DC /* Assets.xcassets */,
-				9804DB26262F73CF000F68DC /* LaunchScreen.storyboard */,
-				9804DB29262F73CF000F68DC /* Info.plist */,
+				98350F4926346D3800C88477 /* Models */,
+				98350F4A26346D4300C88477 /* Views */,
+				98350F4B26346D4800C88477 /* Controllers */,
+				98350F50263471EC00C88477 /* Constants */,
+				98350F4C263471B300C88477 /* SupportFiles */,
 				9804DB21262F73CD000F68DC /* game_sweep.xcdatamodeld */,
-				9804DB4E262F7EE0000F68DC /* EventCell.swift */,
-				9804DB53262F81B8000F68DC /* Secrets.swift */,
-				9804DB1C262F73CD000F68DC /* ViewController.swift */,
-				9804DB58262F85EA000F68DC /* Event.swift */,
-				98350F3A26337D5000C88477 /* DetailViewController.swift */,
-				98350F3F263461BD00C88477 /* RoundImageView.swift */,
-				98350F442634627400C88477 /* RectImageView.swift */,
 			);
 			path = "game-sweep";
 			sourceTree = "<group>";
@@ -147,6 +139,54 @@
 				9804DB3F262F73CF000F68DC /* Info.plist */,
 			);
 			path = "game-sweepUITests";
+			sourceTree = "<group>";
+		};
+		98350F4926346D3800C88477 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9804DB58262F85EA000F68DC /* Event.swift */,
+				9804DB4E262F7EE0000F68DC /* EventCell.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		98350F4A26346D4300C88477 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				98350F3F263461BD00C88477 /* RoundImageView.swift */,
+				98350F442634627400C88477 /* RectImageView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		98350F4B26346D4800C88477 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9804DB1C262F73CD000F68DC /* ViewController.swift */,
+				98350F3A26337D5000C88477 /* DetailViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		98350F4C263471B300C88477 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				9804DB1A262F73CD000F68DC /* SceneDelegate.swift */,
+				9804DB18262F73CD000F68DC /* AppDelegate.swift */,
+				9804DB24262F73CF000F68DC /* Assets.xcassets */,
+				9804DB1E262F73CD000F68DC /* Main.storyboard */,
+				9804DB26262F73CF000F68DC /* LaunchScreen.storyboard */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		98350F50263471EC00C88477 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				9804DB53262F81B8000F68DC /* Secrets.swift */,
+				9804DB29262F73CF000F68DC /* Info.plist */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

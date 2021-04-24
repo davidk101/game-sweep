@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
-    final let url = URL(string: "https://api.seatgeek.com/2/events?client_id=" + CLIENT_ID)
+    var url = URL(string: "https://api.seatgeek.com/2/events?client_id=" + CLIENT_ID)
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -30,6 +30,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         searchBar.delegate = self
         
         tableView.rowHeight = 220
+        
     }
     
     func downloadJson(){
@@ -50,10 +51,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 let decoder = JSONDecoder()
                 let downloadedEvents = try decoder.decode(Events.self, from: data)
-                self.networkEvents = downloadedEvents.events
-                
-                self.filteredEvents = self.events
-                
+                self.events = downloadedEvents.events
+                                
                 DispatchQueue.main.async {
                     
                     self.tableView.reloadData()
@@ -80,9 +79,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return UITableViewCell()
         }
         
-        cell.title.text = filteredEvents[indexPath.row].short_title
-        cell.location.text = filteredEvents[indexPath.row].venue.display_location
-        cell.time.text = filteredEvents[indexPath.row].datetime_local
+        cell.title.text = events[indexPath.row].short_title
+        cell.location.text = events[indexPath.row].venue.display_location
+        cell.time.text = events[indexPath.row].datetime_local
         
         if let imageURL = URL(string: events[indexPath.row].performers[0].image){
             

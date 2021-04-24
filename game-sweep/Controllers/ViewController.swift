@@ -8,63 +8,71 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
-    
-    var url = URL(string: "https://api.seatgeek.com/2/events?client_id=" + CLIENT_ID)
-    
+        
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    private var networkEvents = [Event]()
-    
-    var events: [Event] = []
-    
-    var filteredEvents: [Event] = []
+        
+    private var events: [Event] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        downloadJson()
-        
+            
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-        
+        tableView.tableFooterView = UIView()
         tableView.rowHeight = 220
         
     }
     
-    func downloadJson(){
+    func downloadJson(text: String){
         
-        guard let downloadURL = url else{
-            return
+        if (text == ""){
+            
+            DispatchQueue.main.async {
+                
+                self.events = []
+                self.tableView.tableFooterView = UIView()
+                self.tableView.reloadData()
+            }
         }
         
-        URLSession.shared.dataTask(with: downloadURL){ [self]data, urlReponse, error in
+        else{
             
-            guard let data = data, error == nil, urlReponse != nil else{
-                
-                print("network error")
+            let url = URL(string: "https://api.seatgeek.com/2/events?q=" + text + "&client_id=" + CLIENT_ID)
+            
+            guard let downloadURL = url else{
                 return
             }
             
-            do{
+            URLSession.shared.dataTask(with: downloadURL){ [self]data, urlReponse, error in
                 
-                let decoder = JSONDecoder()
-                let downloadedEvents = try decoder.decode(Events.self, from: data)
-                self.events = downloadedEvents.events
-                                
-                DispatchQueue.main.async {
+                guard let data = data, error == nil, urlReponse != nil else{
                     
-                    self.tableView.reloadData()
+                    print("network error")
+                    return
                 }
                 
-            }
-            catch{
-                
-                print("error parsing JSON")
-            }
-                                                       
-        }.resume()
+                do{
+                    
+                    let decoder = JSONDecoder()
+                    let downloadedEvents = try decoder.decode(Events.self, from: data)
+                    self.events = downloadedEvents.events
+                                    
+                    DispatchQueue.main.async {
+                        
+                        self.tableView.reloadData()
+                    }
+                    
+                }
+                catch{
+                    
+                    print("error parsing JSON")
+                }
+                                                           
+            }.resume()
+        
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -100,7 +108,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                 }
             }
-            
         }
         
         return cell
@@ -109,37 +116,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        filteredEvents = []
+        let text = searchText
         
-        if searchText == ""{
-            
-            filteredEvents = events
-        }
-        
-        else{
-            
-            for event in events{
-                
-                if event.short_title.lowercased().contains(searchText.lowercased()){
-                    
-                    filteredEvents.append(event)
-                }
-            }
-        }
-        
-        self.tableView.reloadData()
-        
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
-        filteredEvents = []
-        filteredEvents = events
-        self.tableView.reloadData()
+        downloadJson(text: text)
     }
     
     // to persist text in search bar
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.resignFirstResponder()
         
     }
     

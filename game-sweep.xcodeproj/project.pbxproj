@@ -20,7 +20,6 @@
 		9804DB54262F81B8000F68DC /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9804DB53262F81B8000F68DC /* Secrets.swift */; };
 		9804DB59262F85EA000F68DC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9804DB58262F85EA000F68DC /* Event.swift */; };
 		98350F3B26337D5000C88477 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98350F3A26337D5000C88477 /* DetailViewController.swift */; };
-		98350F40263461BD00C88477 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98350F3F263461BD00C88477 /* RoundImageView.swift */; };
 		98350F452634627400C88477 /* RectImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98350F442634627400C88477 /* RectImageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,7 +60,6 @@
 		9804DB53262F81B8000F68DC /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		9804DB58262F85EA000F68DC /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		98350F3A26337D5000C88477 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		98350F3F263461BD00C88477 /* RoundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
 		98350F442634627400C88477 /* RectImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +117,7 @@
 				98350F50263471EC00C88477 /* Constants */,
 				98350F4C263471B300C88477 /* SupportFiles */,
 				9804DB21262F73CD000F68DC /* game_sweep.xcdatamodeld */,
+				9804DB29262F73CF000F68DC /* Info.plist */,
 			);
 			path = "game-sweep";
 			sourceTree = "<group>";
@@ -153,7 +152,6 @@
 		98350F4A26346D4300C88477 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				98350F3F263461BD00C88477 /* RoundImageView.swift */,
 				98350F442634627400C88477 /* RectImageView.swift */,
 			);
 			path = Views;
@@ -184,7 +182,6 @@
 			isa = PBXGroup;
 			children = (
 				9804DB53262F81B8000F68DC /* Secrets.swift */,
-				9804DB29262F73CF000F68DC /* Info.plist */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -328,7 +325,6 @@
 				9804DB59262F85EA000F68DC /* Event.swift in Sources */,
 				9804DB1B262F73CD000F68DC /* SceneDelegate.swift in Sources */,
 				98350F3B26337D5000C88477 /* DetailViewController.swift in Sources */,
-				98350F40263461BD00C88477 /* RoundImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

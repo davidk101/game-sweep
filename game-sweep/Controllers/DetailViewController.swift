@@ -9,11 +9,6 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    private var locationString: String
-    private var titleString: String
-    private var timeString: String
-    private var imageURLString: String
-    
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var location: UILabel!
@@ -26,10 +21,41 @@ class DetailViewController: UIViewController {
     private let unlikedScale: CGFloat = 0.7
     private let likedScale: CGFloat = 1.3
     
+    var observer: NSObjectProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemRed
+        
+        observer = NotificationCenter.default.addObserver(forName: Notification.Name("cellData"), object: nil, queue: .main, using: { (notification) in
+            
+            guard let object = notification.object as? [String: String] else{
+                
+                return
+            }
+            
+            guard let titleString = object["titleString"] else{
+                
+                return
+            }
+            
+            guard let locationString = object["locationString"] else{
+                
+                return
+            }
+            
+            guard let timeString = object["timeString"] else{
+                
+                return
+            }
+            
+            guard let imageURLString = object["imageURLString"] else{
+                
+                return
+            }
+            
+            print(titleString)
+            
+        })
         setLabels()
     }
     
@@ -57,10 +83,6 @@ class DetailViewController: UIViewController {
             }
         }*/
         
-        print(timeString)
-        print(locationString)
-        print(imageURLString)
-        print(titleString)
     }
     
     public func flipLikedState(){

@@ -25,6 +25,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    // remove existing notifications
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "cellData") , object: nil)
+    }
+    
     func downloadJson(text: String){
         
         if (text == ""){
@@ -144,7 +150,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         NotificationCenter.default.post(name: Notification.Name(
-                                            "cellData"), object: ["titleString": events[indexPath.row].short_title, "locationString": events[indexPath.row].venue.display_location, "timeString": events[indexPath.row].datetime_local, "imageURLString": events[indexPath.row].performers[0].image])
+                                            rawValue: "cellData"), object: ["titleString": events[indexPath.row].short_title, "locationString": events[indexPath.row].venue.display_location, "timeString": events[indexPath.row].datetime_local, "imageURLString": events[indexPath.row].performers[0].image])
         
         guard let vc = storyboard?.instantiateViewController(identifier: "detail_vc") as? DetailViewController else{
             

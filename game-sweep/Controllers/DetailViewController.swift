@@ -23,6 +23,8 @@ class DetailViewController: UIViewController {
     
     var observer: NSObjectProtocol?
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,8 +54,19 @@ class DetailViewController: UIViewController {
                 
                 return
             }
+            
+            DispatchQueue.main.async{
+                
+                self.setLabels(titleString: titleString, locationString: locationString, timeString: timeString, imageURLString: imageURLString)
+            }
+            
+            print(titleString)
+            print(locationString)
+            print(imageURLString)
+            print(timeString)
+            self.eventTitle.text = titleString
                         
-            self.setLabels(titleString: titleString, locationString: locationString, timeString: timeString, imageURLString: imageURLString)
+
             
         })
 
@@ -61,27 +74,32 @@ class DetailViewController: UIViewController {
     
     private func setLabels(titleString: String, locationString: String, timeString: String, imageURLString: String){
         
-        time.text = timeString
-        location.text = locationString
-        eventTitle.text = titleString
-                
-        if let imageURL = URL(string: imageURLString){
+        
+        DispatchQueue.main.async {
             
-            DispatchQueue.global().async {
-                
-                let data = try? Data(contentsOf: imageURL)
-                
-                if let data = data{
+            self.time.text = timeString
+            self.location.text = locationString
+            self.eventTitle.text = titleString
                     
-                    let image = UIImage(data: data)
+            if let imageURL = URL(string: imageURLString){
+                
+                DispatchQueue.global().async {
                     
-                    DispatchQueue.main.async {
+                    let data = try? Data(contentsOf: imageURL)
+                    
+                    if let data = data{
                         
-                        self.imgView.image = image
+                        let image = UIImage(data: data)
+                        
+                        DispatchQueue.main.async {
+                            
+                            self.imgView.image = image
+                        }
                     }
                 }
             }
         }
+
         
     }
     

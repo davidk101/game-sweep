@@ -52,19 +52,19 @@ class DetailViewController: UIViewController {
                 
                 return
             }
-            
-            print(titleString)
+                        
+            self.setLabels(titleString: titleString, locationString: locationString, timeString: timeString, imageURLString: imageURLString)
             
         })
-        setLabels()
+
     }
     
-    private func setLabels(){
+    private func setLabels(titleString: String, locationString: String, timeString: String, imageURLString: String){
         
-        /*time.text = timeString
+        time.text = timeString
         location.text = locationString
         eventTitle.text = titleString
-        
+                
         if let imageURL = URL(string: imageURLString){
             
             DispatchQueue.global().async {
@@ -81,7 +81,7 @@ class DetailViewController: UIViewController {
                     }
                 }
             }
-        }*/
+        }
         
     }
     

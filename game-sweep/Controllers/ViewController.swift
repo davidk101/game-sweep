@@ -131,6 +131,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.resignFirstResponder()
+    }
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         
         searchBar.resignFirstResponder()

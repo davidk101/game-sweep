@@ -21,7 +21,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.dataSource = self
         searchBar.delegate = self
         tableView.tableFooterView = UIView()
-        tableView.rowHeight = 220
+        tableView.rowHeight = 199
         
     }
     
@@ -130,6 +130,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         searchBar.resignFirstResponder()
         
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        
+        searchBar.resignFirstResponder()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

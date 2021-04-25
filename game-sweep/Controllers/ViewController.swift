@@ -149,7 +149,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // post must be on main thread 
+        // debug: post must be on main thread 
         DispatchQueue.main.async {
             
             NotificationCenter.default.post(name: NSNotification.Name(

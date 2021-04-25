@@ -52,45 +52,35 @@ class DetailViewController: UIViewController {
                 
                 return
             }
-            
-            /*DispatchQueue.main.async{
+
                 
-                self.setLabels(titleString: titleString, locationString: locationString, timeString: timeString, imageURLString: imageURLString)
-            }*/
-    
-            self.eventTitle.text = titleString
-            
+            self.setLabels(titleString: titleString, locationString: locationString, timeString: timeString, imageURLString: imageURLString)
         })
     }
     
     private func setLabels(titleString: String, locationString: String, timeString: String, imageURLString: String){
         
-        
-        DispatchQueue.main.async {
-            
-            self.time.text = timeString
-            self.location.text = locationString
-            self.eventTitle.text = titleString
+        self.time.text = timeString
+        self.location.text = locationString
+        self.eventTitle.text = titleString
                     
-            if let imageURL = URL(string: imageURLString){
+        if let imageURL = URL(string: imageURLString){
                 
-                DispatchQueue.global().async {
+            DispatchQueue.global().async {
                     
-                    let data = try? Data(contentsOf: imageURL)
+                let data = try? Data(contentsOf: imageURL)
                     
-                    if let data = data{
+                if let data = data{
                         
-                        let image = UIImage(data: data)
+                    let image = UIImage(data: data)
                         
-                        DispatchQueue.main.async {
+                    DispatchQueue.main.async {
                             
-                            self.imgView.image = image
-                        }
+                        self.imgView.image = image
                     }
                 }
             }
         }
-        
     }
     
     public func flipLikedState(){

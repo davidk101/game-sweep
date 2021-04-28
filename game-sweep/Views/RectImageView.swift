@@ -18,7 +18,7 @@ class RectImageView: UIImageView{
         
         self.layer.masksToBounds = true
         self.clipsToBounds = true
-        self.layer.cornerRadius = self.frame.size.width / 3
+        self.layer.cornerRadius = self.frame.size.width / 4
         
         
     }

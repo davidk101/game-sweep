@@ -31,6 +31,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "cellData") , object: nil)
     }
     
+    func convertDateFormat(input: String) -> String{
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+        let date = dateFormatter.date(from: input)
+        
+        dateFormatter.dateFormat = "EEE, MMM d, yyyy - h:mm a"
+        dateFormatter.timeZone = NSTimeZone.local
+        let timeStamp = dateFormatter.string(from: date!)
+        
+        return timeStamp
+        
+    }
+    
     func downloadJson(text: String){
         
         if (text == ""){
@@ -95,7 +110,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         cell.title.text = events[indexPath.row].short_title
         cell.location.text = events[indexPath.row].venue.display_location
-        cell.time.text = events[indexPath.row].datetime_local
+        cell.time.text = convertDateFormat(input: events[indexPath.row].datetime_local)
         
         if let imageURL = URL(string: events[indexPath.row].performers[0].image){
             
@@ -153,7 +168,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         DispatchQueue.main.async {
             
             NotificationCenter.default.post(name: NSNotification.Name(
-                                                rawValue: "cellData"), object: ["titleString": self.events[indexPath.row].short_title, "locationString": self.events[indexPath.row].venue.display_location, "timeString": self.events[indexPath.row].datetime_local, "imageURLString": self.events[indexPath.row].performers[0].image])
+                                                rawValue: "cellData"), object: ["titleString": self.events[indexPath.row].short_title, "locationString": self.events[indexPath.row].venue.display_location, "timeString": self.convertDateFormat(input: self.events[indexPath.row].datetime_local), "imageURLString": self.events[indexPath.row].performers[0].image])
         }
 
         guard let vc = storyboard?.instantiateViewController(identifier: "detail_vc") as? DetailViewController else{
